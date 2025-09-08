@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/Ui/home/home_screen.dart';
+import 'package:islami_app/Ui/home/taps/quran_tap/soura%20_details/soura%20_details%20_screen.dart';
+import 'package:islami_app/Ui/introduction/introduction_screen.dart';
 import 'package:islami_app/utils/app_routes.dart';
+import 'package:islami_app/utils/app_theme.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.homeRoute,
+      initialRoute: AppRoutes.introductionRoute,
       routes: {
+        AppRoutes.introductionRoute: (context) => IntroScreen(),
         AppRoutes.homeRoute: (context) => HomeScreen(),
+        AppRoutes.souraDetailsRoute: (context) => SouraDetails(),
       },
+      themeMode: ThemeMode.dark,
+      darkTheme: AppTheme.darkTheme,
     );
   }
 }
