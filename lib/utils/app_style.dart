@@ -26,4 +26,6 @@ class AppStyle {
       color: AppColors.black71Color, fontSize: 20, fontWeight: FontWeight.bold);
   static final TextStyle bold32white = TextStyle(
       color: AppColors.whiteColor, fontSize: 32, fontWeight: FontWeight.bold);
+  static final TextStyle bold16black = TextStyle(
+      color: AppColors.blackColor, fontSize: 16, fontWeight: FontWeight.bold);
 }
