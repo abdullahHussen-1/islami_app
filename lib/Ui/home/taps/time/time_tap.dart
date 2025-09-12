@@ -35,7 +35,7 @@ class TimeTap extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      "08 Sept,\n2025",
+                      "13 Sept,\n2025",
                       style: AppStyle.bold16white,
                     ),
                     Text(
@@ -43,13 +43,13 @@ class TimeTap extends StatelessWidget {
                       style: AppStyle.bold20black71,
                     ),
                     Text(
-                      "15 Rabi1,\n1447",
+                      "20 Rabi1,\n1447",
                       style: AppStyle.bold16white,
                     )
                   ],
                 ),
                 Text(
-                  "Monday",
+                  "Saturday",
                   style: AppStyle.bold20black,
                 ),
                 CarouselSlider.builder(
@@ -84,7 +84,7 @@ class TimeTap extends StatelessWidget {
                       style: AppStyle.bold20black71,
                     ),
                     Text(
-                      TimeResources.timeList[3],
+                      TimeResources.timeList[0],
                       style: AppStyle.bold20black,
                     ),
                     SizedBox(

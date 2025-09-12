@@ -25,4 +25,7 @@ class AppAssets {
   static const String morningAzkar = "assets/images/morning_azkar.png";
   static const String wakingAzkar = "assets/images/waking_azkar.png";
   static const String sleepingAzkar = "assets/images/sleeping_azkar.png";
+  static const String hadithBackGround = "assets/images/hadith_back_ground.png";
+  static const String hadithBackGroundLeftRight =
+      "assets/images/back_ground_left_rigt_botton.png";
 }
