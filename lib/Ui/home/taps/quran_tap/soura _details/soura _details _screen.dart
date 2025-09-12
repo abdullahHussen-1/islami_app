@@ -27,6 +27,15 @@ class _SouraDetailsState extends State<SouraDetails> {
     }
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+            onPressed: () async {
+              Navigator.pop(context, index);
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: AppColors.goldColor,
+            )),
         title: Text(
           QuranResources.englishQuranSurahsList[index],
           style: AppStyle.bold20gold,
@@ -84,6 +93,9 @@ class _SouraDetailsState extends State<SouraDetails> {
                       check: false,
                     )
                   ],
+                ),
+                SizedBox(
+                  height: sizeHeight * 0.03,
                 ),
                 verses.isEmpty
                     ? CircularProgressIndicator(

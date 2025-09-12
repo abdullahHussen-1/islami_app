@@ -13,6 +13,8 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.blackBgColor,
         centerTitle: true,
-        iconTheme: IconThemeData(color: AppColors.goldColor),
+        iconTheme: IconThemeData(
+          color: AppColors.goldColor,
+        ),
       ));
 }
