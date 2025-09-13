@@ -6,6 +6,7 @@ import 'package:islami_app/Ui/home/taps/time/time_details/time.dart';
 import 'package:islami_app/Ui/home/taps/time/time_details/time_resources.dart';
 import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
+import 'package:islami_app/utils/app_routes.dart';
 import 'package:islami_app/utils/app_style.dart';
 
 class TimeTap extends StatelessWidget {
@@ -119,7 +120,10 @@ class TimeTap extends StatelessWidget {
               itemCount: AzkarResources.azkarList.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.azkarDetailsRoute,
+                        arguments: index);
+                  },
                   child: Azkar(
                     index: index,
                   ),
