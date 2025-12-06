@@ -4,8 +4,13 @@ class TimeResources {
     "SUNRISE",
     "DHUHR",
     "ASR",
+    "SUNSET",
     "MAGHRIB",
-    "ISHA"
+    "ISHA",
+    "IMSAK",
+    "MIDNIGHT",
+    "FIRSTTHIRD",
+    "LASTTHIRD"
   ];
   static const List<String> timeList = [
     "05:10",
