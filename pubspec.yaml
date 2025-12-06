@@ -37,7 +37,8 @@ dependencies:
   flutter_native_splash: ^2.4.4
   introduction_screen: ^4.0.0
   carousel_slider: ^5.1.1
-
+  dio: ^5.9.0
+  audioplayers: ^6.5.1
 
 
 

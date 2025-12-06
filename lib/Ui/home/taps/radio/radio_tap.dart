@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/Ui/home/taps/radio/cheack_radio.dart';
 import 'package:islami_app/Ui/home/taps/radio/list_radio.dart';
-import 'package:islami_app/Ui/home/taps/radio/radio_resources.dart';
+import 'package:islami_app/api/apiManager.dart';
 import 'package:islami_app/utils/app_colors.dart';
+import 'package:islami_app/utils/app_style.dart';
 
 class RadioTap extends StatefulWidget {
   @override
@@ -56,20 +57,117 @@ class _RadioTapState extends State<RadioTap> {
                 ],
               ),
             ),
-            Expanded(
-                child: ListView.separated(
-                    itemBuilder: (context, index) {
-                      return ListRadio(
-                        index: index,
-                        checkText: radioClick,
-                      );
+            radioClick
+                ? FutureBuilder(
+                    future: ApiManager.getRadio(),
+                    builder: (context, snapshot) {
+                      //todo loading
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Container(
+                          alignment: Alignment.center,
+                          height: sizeHeight * 0.5,
+                          child: CircularProgressIndicator(
+                            backgroundColor: AppColors.whiteColor,
+                            color: AppColors.goldColor,
+                          ),
+                        );
+                        //todo error from client
+                      } else if (snapshot.hasError) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Something went wrong.",
+                              style: AppStyle.bold24gold,
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.whiteColor,
+                              ),
+                              onPressed: () {
+                                ApiManager.getRadio();
+                                setState(() {});
+                              },
+                              child: Text(
+                                "Try Again",
+                                style: AppStyle.bold14black,
+                              ),
+                            ),
+                          ],
+                        );
+                        //todo server=>response=>success,error
+                      }
+                      var listRadio = snapshot.data!.radios ?? [];
+                      return Expanded(
+                          child: ListView.separated(
+                              itemBuilder: (context, index) {
+                                return ListRadio(
+                                  index: index,
+                                  checkText: radioClick,
+                                  radios: listRadio[index],
+                                );
+                              },
+                              separatorBuilder: (context, index) => SizedBox(
+                                    height: 10,
+                                  ),
+                              itemCount: listRadio!.length));
                     },
-                    separatorBuilder: (context, index) => SizedBox(
-                          height: 10,
-                        ),
-                    itemCount: radioClick
-                        ? RadioResources.nameRadio.length
-                        : RadioResources.nameReciters.length))
+                  )
+                : FutureBuilder(
+                    future: ApiManager.getReciters(),
+                    builder: (context, snapshot) {
+                      //todo loading
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Container(
+                          alignment: Alignment.center,
+                          height: sizeHeight * 0.5,
+                          child: CircularProgressIndicator(
+                            backgroundColor: AppColors.whiteColor,
+                            color: AppColors.goldColor,
+                          ),
+                        );
+                        //todo error from client
+                      } else if (snapshot.hasError) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Something went wrong.",
+                              style: AppStyle.bold24gold,
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.whiteColor,
+                              ),
+                              onPressed: () {
+                                ApiManager.getRadio();
+                                setState(() {});
+                              },
+                              child: Text(
+                                "Try Again",
+                                style: AppStyle.bold14black,
+                              ),
+                            ),
+                          ],
+                        );
+                        //todo server=>response=>success,error
+                      }
+                      var listReciters = snapshot.data!.reciters ?? [];
+                      return Expanded(
+                          child: ListView.separated(
+                              itemBuilder: (context, index) {
+                                return ListRadio(
+                                  index: index,
+                                  checkText: radioClick,
+                                  reciters: listReciters[index],
+                                );
+                              },
+                              separatorBuilder: (context, index) => SizedBox(
+                                    height: 10,
+                                  ),
+                              itemCount: listReciters.length));
+                    },
+                  )
           ],
         ),
       ),

@@ -4,4 +4,5 @@ class AppRoutes {
   static const String souraDetailsRoute = "details";
   static const String hadethDetailsRoute = "hadeth_details";
   static const String azkarDetailsRoute = "azkar_details";
+  static const String recitersItemRoute = "reciters_item";
 }
